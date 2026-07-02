@@ -30,6 +30,7 @@ defineProps({
                     <th class="border p-2">Email</th>
                     <th class="border p-2">Phone</th>
                     <th class="border p-2">Status</th>
+                    <th class="border p-2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,13 @@ defineProps({
                     <td class="border p-2">{{ customer.email }}</td>
                     <td class="border p-2">{{ customer.phone }}</td>
                     <td style="background-color:green;"class="border p-2">{{ customer.status }}</td>
+                    <td class="border p-2">
+                        <Link 
+                            :href="route('customers.edit',customer.id)"
+                            class="text-blue-600">
+                            Edit
+                        </Link>
+                    </td>
                 </tr>
             </tbody>
         </table>

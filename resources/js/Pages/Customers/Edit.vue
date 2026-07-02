@@ -7,24 +7,28 @@ import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
+const props = defineProps({
+    customer: Object,
+});
+
 const form = useForm({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    status: 'Active',
+    name: props.customer.name,
+    email: props.customer.email,
+    phone: props.customer.phone,
+    address: props.customer.address,
+    status: props.customer.status,
 });
 
 const submit = () =>{
-    form.post(route('customers.store'));
+    form.put(route('customers.update',props.customer.id));
 };
 
 </script>
 <template>
-    <AppLayout title="Create Customer">
+    <AppLayout title="Edit Customer">
         <template #header>
             <h2 class="text-xl font-semibold">
-                Create Customer
+                Edit Customer
             </h2>
         </template>
 
@@ -64,7 +68,7 @@ const submit = () =>{
                         </div>
 
                         <PrimaryButton>
-                            Save Customer
+                            Update Customer
                         </PrimaryButton>
 
                     </form>

@@ -58,7 +58,10 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer :: findOrFail($id);
+        return Inertia :: render('Customers/Edit',[
+            'customer'=> $customer,
+        ]);
     }
 
     /**
@@ -66,7 +69,19 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:customers,email,' .$id,
+            'phone'=> 'required',
+            'address' => 'required',
+            'status' => 'required',
+        ]);
+
+        $customer =Customer::findOrFail($id);
+
+        $customer->update($validated);
+
+        return redirect()->route('customers.index');
     }
 
     /**
