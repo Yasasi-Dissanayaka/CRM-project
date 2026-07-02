@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Models\Customer;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -20,7 +21,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard',[
+            'customerCount' =>Customer::count(),
+        ]);
     })->name('dashboard');
 
     Route::resource('customers',CustomerController::class);

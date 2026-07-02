@@ -1,11 +1,17 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link,router } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
 
 defineProps({
     customers:Array
 });
+function deleteCustomer(id){
+    if(confirm("Are yoou sure you want to dalete this customer")){
+        router.delete(route('customers.destroy', id));
+    }
+
+}
 </script>
 
 <template>
@@ -45,6 +51,11 @@ defineProps({
                             class="text-blue-600">
                             Edit
                         </Link>
+                        <button
+                            @click="deleteCustomer(customer.id)"
+                            class="text-red-600">
+                            Delete
+                        </button>
                     </td>
                 </tr>
             </tbody>
