@@ -56,16 +56,8 @@ const logout = () => {
                                     Customers
                                 </NavLink>
 
-                                <NavLink :href="route('customers.index')" :active="route().current('customers.*')">
+                                <NavLink :href="route('proposals.index')" :active="route().current('proposals.*')">
                                     Proposals
-                                </NavLink>
-
-                                <NavLink :href="route('customers.index')" :active="route().current('customers.*')">
-                                    Invoices
-                                </NavLink>
-
-                                <NavLink :href="route('customers.index')" :active="route().current('customers.*')">
-                                    Transactions
                                 </NavLink>
                             </div>
                         </div>
@@ -214,6 +206,12 @@ const logout = () => {
                         <ResponsiveNavLink :href="route('customers.index')" :active="route().current('customers.*')">
                             Customers
                         </ResponsiveNavLink>
+
+                        <ResponsiveNavLink :href="route('proposals.index')" :active="route().current('proposals.*')">
+                            Proposals
+                        </ResponsiveNavLink>
+
+                        
                     </div>
 
                     <!-- Responsive Settings Options -->

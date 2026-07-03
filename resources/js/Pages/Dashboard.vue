@@ -5,6 +5,8 @@ import { usePage } from '@inertiajs/vue3';
 const user = usePage().props.auth.user;
 
 defineProps({customerCount: Number,
+             proposalCount: Number,
+
 
 });
 </script>
@@ -26,7 +28,7 @@ defineProps({customerCount: Number,
                     Welcome, {{ user.name }}
                 </h2>
                 <p style="color:slateblue;" class="text-gry-500 mt-2"><b></b>
-                    Manage your customers,Proposals,Inovoices and Transactions
+                    Manage your customers,Proposals,Invoices and Transactions
                 </p>
             </div>
 
@@ -43,20 +45,6 @@ defineProps({customerCount: Number,
                     Total Proposals
                     <p class="text-4xl font-bold mt-4">
                         {{ proposalCount }}
-                    </p>
-                </div>
-
-                <div class="bg-yellow-500 text-white p-6 rounded text-center">
-                    Total Invoices
-                    <p class="text-4xl font-bold mt-4">
-                        {{ inovoiceCount }}
-                    </p>
-                </div>
-
-                <div class="bg-purple-600 text-white p-6 rounded text-center">
-                    Total Transactions
-                    <p class="text-4xl font-bold mt-4">
-                        {{ transactionCount }}
                     </p>
                 </div>
 

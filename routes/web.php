@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProposalController;
 use App\Models\Customer;
+use App\Models\Proposal;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -24,7 +25,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard',[
             'customerCount' =>Customer::count(),
-            'proposalCount' => 0,
+            'proposalCount' => Proposal::count(),
             'invoiceCount' => 0,
             'transactionCount' => 0,
         ]);

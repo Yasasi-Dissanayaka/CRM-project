@@ -63,12 +63,12 @@ class ProposalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proposal $proposal)
+    public function edit(string $id)
     {
         $proposal = Proposal :: findOrFail($id);
 
-        $customer = Customer :: all();
-        return Inertia :: render('Customers/Edit',[
+        $customers = Customer :: all();
+        return Inertia :: render('Proposals/Edit',[
             'proposal'=>$proposal,
             'customers'=> $customers,
         ]);
@@ -77,16 +77,35 @@ class ProposalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Proposal $proposal)
+    public function update(Request $request, string $id)
     {
-        //
+        
+        $validated = $request->validate([
+            'customer_id' => 'required',
+            'proposal_number' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'amount' => 'required|numeric',
+            'status' => 'required',
+        ]);
+
+        $proposal = Proposal::findOrFail($id);
+
+        $proposal->update($validated);
+
+        return redirect()->route('proposals.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Proposal $proposal)
+    public function destroy(String $id)
     {
-        //
+        $proposal =Proposal::findOrFail($id);
+
+        $proposal->delete();
+
+        return redirect()->route('proposals.index');
     }
 }
