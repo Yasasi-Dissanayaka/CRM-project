@@ -13,4 +13,8 @@ class Customer extends Model
         'address',
         'status',
     ];
+
+    public function proposals(){
+        return $this-> hasMany(Proposal::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proposal;
+use App\Models\Customer;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,11 @@ class ProposalController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Proposals/Create');
+        $customers = Customer::all();
+        
+        return Inertia::render('Proposals/Create',[
+            'customers' => $customers,
+        ]);
     }
 
     /**
@@ -60,7 +65,13 @@ class ProposalController extends Controller
      */
     public function edit(Proposal $proposal)
     {
-        //
+        $proposal = Proposal :: findOrFail($id);
+
+        $customer = Customer :: all();
+        return Inertia :: render('Customers/Edit',[
+            'proposal'=>$proposal,
+            'customers'=> $customers,
+        ]);
     }
 
     /**

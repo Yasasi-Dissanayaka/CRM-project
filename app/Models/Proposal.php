@@ -10,8 +10,12 @@ class Proposal extends Model
         'customer_id',
         'proposal_number',
         'title',
-        'descripton',
+        'description',
         'amount',
         'status',
     ];
+
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
 }
