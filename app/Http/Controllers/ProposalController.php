@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proposal;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class ProposalController extends Controller
@@ -12,7 +13,10 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        //
+        $proposals = Proposal :: all();
+        return Inertia :: render('Proposals/Index',[
+            'proposals'=> $proposals,
+        ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class ProposalController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Proposals/Create');
     }
 
     /**
@@ -28,7 +32,19 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'customer_id' => 'required',
+            'proposal_number' => 'required',
+            'title'=> 'required',
+            'description' => 'required',
+            'amount' => 'required|numeric',
+            'status' => 'required',
+
+        ]);
+
+        Proposal::create($validated);
+
+        return redirect()->route('proposals.index');
     }
 
     /**

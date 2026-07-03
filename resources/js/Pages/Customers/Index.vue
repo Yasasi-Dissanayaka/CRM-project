@@ -48,9 +48,12 @@ function deleteCustomer(id){
                     <td class="border p-2">
                         <Link 
                             :href="route('customers.edit',customer.id)"
-                            class="text-blue-600">
+                            class="text-blue-600 mr-4"
+                        >
+
                             Edit
                         </Link>
+
                         <button
                             @click="deleteCustomer(customer.id)"
                             class="text-red-600">

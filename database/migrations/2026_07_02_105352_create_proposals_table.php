@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
+        $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+
+        $table->string('proposal_number')->unique();
+
+        $table->string('title');
+
+        $table->text('description');
+
+        $table->decimal('amount', 10, 2);
+
+        $table->enum('status', ['Pending', 'Accepted', 'Rejected'])->default('Pending');
+
+        $table->timestamps();
         });
     }
 

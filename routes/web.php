@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProposalController;
 use App\Models\Customer;
 use Inertia\Inertia;
 
@@ -23,8 +24,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard',[
             'customerCount' =>Customer::count(),
+            'proposalCount' => 0,
+            'invoiceCount' => 0,
+            'transactionCount' => 0,
         ]);
     })->name('dashboard');
 
     Route::resource('customers',CustomerController::class);
+    Route::resource('proposals',ProposalController::class);
 });
