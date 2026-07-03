@@ -6,6 +6,8 @@ use App\Models\Proposal;
 use App\Models\Customer;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use App\Mail\ProposalMail;
+use Illuminate\Support\Facades\Mail;
 
 class ProposalController extends Controller
 {
@@ -47,7 +49,8 @@ class ProposalController extends Controller
 
         ]);
 
-        Proposal::create($validated);
+        $proposal = Proposal::create($validated);
+        Mail::to('yasasianjanadissanayaka@gmail.com')->send(new ProposalMail($proposal));
 
         return redirect()->route('proposals.index');
     }

@@ -9,17 +9,20 @@ use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Proposal;
 
 class ProposalMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public Proposal $proposal;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Proposal $proposal)
     {
-        //
+        $this->proposal = $proposal;
     }
 
     /**
@@ -38,7 +41,11 @@ class ProposalMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.proposal',
+            with: [
+                'proposal'=>$this->proposal,
+
+            ],
         );
     }
 
