@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\InvoiceController;
 use App\Models\Customer;
 use App\Models\Proposal;
 use Inertia\Inertia;
@@ -33,4 +34,6 @@ Route::middleware([
 
     Route::resource('customers',CustomerController::class);
     Route::resource('proposals',ProposalController::class);
+    Route::resource('invoices',InvoiceController::class);
+
 });

@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Customer;
+use App\Models\Proposal;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use App\Mail\InvoiceMail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class InvoiceController extends Controller
 {
@@ -12,7 +19,10 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $invoices = Invoice :: all();
+        return Inertia :: render('Invoices/Index',[
+            'invoices'=> $invoices,
+        ]);
     }
 
     /**
@@ -20,7 +30,11 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        
+        return Inertia::render('Invoices/Create',[
+            'customers' => $customers,
+        ]);
     }
 
     /**
@@ -28,7 +42,22 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'customer_id' => 'required',
+            'proposal_number' => 'required',
+            'invoice_number'=> 'required',
+            'amount' => 'required|numeric',
+            'due_date' => 'required|date',
+            'status' => 'required',
+
+
+        ]);
+
+        $invoice = Invoice::create($validated);
+        
+        Mail::to('yasasianjanadissanayaka@gmail.com')->send(new InvoiceMail($invoice));
+
+        return redirect()->route('invoices.index');
     }
 
     /**

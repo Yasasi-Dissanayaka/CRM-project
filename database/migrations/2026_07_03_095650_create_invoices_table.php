@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->string('proposal_number')->constrained()->onDelete('cascade');
+
+            $table->string('invoice_number')->unique();
+            $table->decimal('amount',10,2);
+
+            $table->date('due_date');
+
+            $table->enum('status',[
+                'Paid',
+                'Unpaid',
+                'Overdue'
+            ])->default('Unpaid');
             $table->timestamps();
         });
     }

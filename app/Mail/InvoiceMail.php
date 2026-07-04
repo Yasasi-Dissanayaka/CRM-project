@@ -9,20 +9,20 @@ use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Proposal;
+use App\Models\Invoice;
 
-class ProposalMail extends Mailable
+class InvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public Proposal $proposal;
+    public Invoice $invoice;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Proposal $proposal)
+    public function __construct(Invoice $invoice)
     {
-        $this->proposal = $proposal;
+        $this->invoice = $invoice;
     }
 
     /**
@@ -31,7 +31,7 @@ class ProposalMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Proposal Mail',
+            subject: 'Invoice Mail',
         );
     }
 
@@ -41,9 +41,9 @@ class ProposalMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.proposal',
+            view: 'emails.invoice',
             with: [
-                'proposal'=>$this->proposal,
+                'invoice'=>$this->invoice,
 
             ],
         );
