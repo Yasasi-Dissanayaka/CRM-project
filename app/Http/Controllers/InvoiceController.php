@@ -71,24 +71,47 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Invoice $invoice)
+    public function edit(String $id)
     {
-        //
+        $invoice = Invoice :: findOrFail($id);
+
+        $customers = Customer :: all();
+        return Inertia :: render('Invoices/Edit',[
+            'invoice'=>$invoice,
+            'customers'=> $customers,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request, String $id)
     {
-        //
+        $validated = $request->validate([
+            'customer_id' => 'required',
+            'proposal_number' => 'required',
+            'invoice_number' => 'required',
+            'amount' => 'required|numeric',
+            'due_date' => 'required|date',
+            'status' => 'required',
+        ]);
+
+        $invoice = Invoice::findOrFail($id);
+
+        $invoice->update($validated);
+
+        return redirect()->route('invoices.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Invoice $invoice)
+    public function destroy(String $id)
     {
-        //
+        $invoice =Invoice::findOrFail($id);
+
+        $invoice->delete();
+
+        return redirect()->route('invoices.index');
     }
 }

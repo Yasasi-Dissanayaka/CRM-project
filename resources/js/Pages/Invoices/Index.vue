@@ -7,7 +7,7 @@ defineProps({
     invoices:Array
 });
 function deleteInvoice(id){
-    if(confirm("Are yoou sure you want to dalete this invoice")){
+    if(confirm("Are you sure you want to dalete this invoice?")){
         router.delete(route('invoices.destroy', id));
     }
 
@@ -29,7 +29,7 @@ function deleteInvoice(id){
         
             </div>
 
-        <table class="w-full border border-collaps">
+        <table class="w-full border border-collapse">
             <thead style="background-color: darkgray;" class="bg-gray-100">
                 <tr>
                     <th class="border p-2">Customer_ID</th>
@@ -47,7 +47,8 @@ function deleteInvoice(id){
                 <tr v-for="invoice in invoices" :key="invoice.id">
                     <td class="border p-2">{{ invoice.customer_id }}</td>
                     <td class="border p-2">{{ invoice.proposal_number }}</td>
-                    <td class="border p-2">{{ invoice.amount }}</td>
+                    <td class="border p-2">{{ invoice.invoice_number }}</td>
+                    <td class="border p-2">RS. {{ invoice.amount }}</td>
                     <td class="border p-2">{{ invoice.due_date }}</td>
                     <td 
                         class="border p-2 text-white"

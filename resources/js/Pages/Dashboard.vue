@@ -6,6 +6,7 @@ const user = usePage().props.auth.user;
 
 defineProps({customerCount: Number,
              proposalCount: Number,
+             invoiceCount: Number,
 
 
 });
@@ -45,6 +46,13 @@ defineProps({customerCount: Number,
                     Total Proposals
                     <p class="text-4xl font-bold mt-4">
                         {{ proposalCount }}
+                    </p>
+                </div>
+
+                <div class="bg-yellow-600 text-white p-6 rounded text-center">
+                    Total Invoices
+                    <p class="text-4xl font-bold mt-4">
+                        {{ invoiceCount }}
                     </p>
                 </div>
 

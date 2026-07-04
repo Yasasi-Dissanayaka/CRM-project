@@ -216,6 +216,10 @@ const logout = () => {
                             Proposals
                         </ResponsiveNavLink>
 
+                        <ResponsiveNavLink :href="route('invoices.index')" :active="route().current('invoices.*')">
+                            Invoices
+                        </ResponsiveNavLink>
+
                         
                     </div>
 

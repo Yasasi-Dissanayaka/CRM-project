@@ -90,7 +90,7 @@ const submit = () =>{
                         </div>
 
                         <PrimaryButton>
-                            Save Invoice
+                            Send Invoice
                         </PrimaryButton>
 
                     </form>

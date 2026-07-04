@@ -8,7 +8,7 @@ import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 const props = defineProps({
-    proposal:Object,
+    proposal: Object,
     customers: Array,
 });
 
