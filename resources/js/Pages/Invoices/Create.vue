@@ -28,7 +28,7 @@ const submit = () =>{
 <template>
     <AppLayout title="Create Invoice">
         <template #header>
-            <h2 class="text-xl font-semibold">
+            <h2 class="text-3xl font-bold text-gray-800">
                 Create Invoice
             </h2>
         </template>

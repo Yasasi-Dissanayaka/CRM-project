@@ -22,47 +22,140 @@ function deleteCustomer(id){
             
                 <h1 class="text-2xl font-bold">Customers</h1>
 
-                <Link :href="route('customers.create')"class="bg-blue-600 text-white px-4 py-2 rounded">
+                <Link :href="route('customers.create')"class="inline-flex items-center
+                        px-5 py-2.5
+                        bg-[#6366F1]
+                        border border-transparent
+                        rounded-xl
+                        font-semibold
+                        text-sm
+                        text-white
+                        shadow-lg
+                        shadow-indigo-500/30
+                        hover:bg-[#4F46E5]
+                        hover:shadow-xl
+                        hover:-translate-y-0.5
+                        active:bg-[#4338CA]
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-[#6366F1]
+                        focus:ring-offset-2
+                        transition-all
+                        duration-200">
                     Add Customer
                 </Link>
         
         
             </div>
 
-        <table class="w-full border border-collaps">
-            <thead style="background-color: darkgray;" class="bg-gray-100">
-                <tr>
-                    <th class="border p-2">Name</th>
-                    <th class="border p-2">Email</th>
-                    <th class="border p-2">Phone</th>
-                    <th class="border p-2">Status</th>
-                    <th class="border p-2">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="customer in customers" :key="customer.id">
-                    <td class="border p-2">{{ customer.name }}</td>
-                    <td class="border p-2">{{ customer.email }}</td>
-                    <td class="border p-2">{{ customer.phone }}</td>
-                    <td style="background-color:green;"class="border p-2">{{ customer.status }}</td>
-                    <td class="border p-2">
-                        <Link 
-                            :href="route('customers.edit',customer.id)"
-                            class="text-blue-600 mr-4"
-                        >
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
 
-                            Edit
-                        </Link>
+        <table class="min-w-full">
 
-                        <button
-                            @click="deleteCustomer(customer.id)"
-                            class="text-red-600">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
+        <thead class="bg-gray-50 border-b">
+
+        <tr>
+
+        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+        Name
+        </th>
+
+        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+        Email
+        </th>
+
+        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+        Phone
+        </th>
+
+        <th class="px-6 py-4 text-center text-gray-500 font-semibold uppercase text-sm">
+        Status
+        </th>
+
+        <th class="px-6 py-4 text-center text-gray-500 font-semibold uppercase text-sm">
+        Actions
+        </th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr
+        v-for="customer in customers"
+        :key="customer.id"
+        class="border-b hover:bg-gray-50 transition duration-200">
+
+        <td class="px-6 py-5 font-semibold">
+        {{ customer.name }}
+        </td>
+
+        <td class="px-6 py-5 text-gray-600">
+        {{ customer.email }}
+        </td>
+
+        <td class="px-6 py-5">
+        {{ customer.phone }}
+        </td>
+
+        <td class="px-6 py-5 text-center">
+
+        <span
+        class="px-4 py-1 rounded-full text-sm font-semibold"
+        :class="{
+        'bg-green-100 text-green-700': customer.status === 'Active',
+        'bg-red-100 text-red-700': customer.status === 'Inactive'
+        }"
+        >
+        {{ customer.status }}
+        </span>
+
+        </td>
+
+        <td class="px-6 py-5">
+
+        <div class="flex justify-center gap-2">
+
+        <Link
+        :href="route('customers.edit', customer.id)"
+        class="bg-blue-600
+        hover:bg-[#4F46E5]
+        text-white
+        px-4 py-2
+        rounded-xl
+        shadow-md
+        hover:shadow-xl
+        transition-all duration-200"
+        >
+        Edit
+        </Link>
+
+        <button
+        @click="deleteCustomer(customer.id)"
+        class="bg-red-500
+        hover:bg-red-600
+        text-white
+        px-4 py-2
+        rounded-xl
+        shadow-md
+        hover:shadow-xl
+        transition-all duration-200"
+        >
+        Delete
+        </button>
+
+        </div>
+
+        </td>
+
+        </tr>
+
+        </tbody>
+
         </table>
+
+        </div>
         </div>
     </AppLayout>
 

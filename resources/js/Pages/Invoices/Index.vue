@@ -20,74 +20,151 @@ function deleteInvoice(id){
         <div class="p-6">
             <div class="flex justify-between items-center mb-6">
             
-                <h1 class="text-2xl font-bold">Invoices</h1>
+                <h1 class="text-3xl font-bold text-gray-800">Invoices</h1>
 
-                <Link :href="route('invoices.create')"class="bg-blue-600 text-white px-4 py-2 rounded">
+                <Link :href="route('invoices.create')"class="inline-flex items-center
+                    px-5 py-2.5
+                    bg-[#6366F1]
+                    border border-transparent
+                    rounded-xl
+                    font-semibold
+                    text-sm
+                    text-white
+                    shadow-lg
+                    shadow-indigo-500/30
+                    hover:bg-[#4F46E5]
+                    hover:shadow-xl
+                    hover:-translate-y-0.5
+                    active:bg-[#4338CA]
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-[#6366F1]
+                    focus:ring-offset-2
+                    transition-all
+                    duration-200"
+                >
                     Add Invoice
                 </Link>
         
         
             </div>
 
-        <table class="w-full border border-collapse">
-            <thead style="background-color: darkgray;" class="bg-gray-100">
-                <tr>
-                    <th class="border p-2">Customer_ID</th>
-                    <th class="border p-2">Proposal_Number</th>
-                    <th class="border p-2">Invoice_Number</th>
-                    <th class="border p-2">Amount</th>
-                    <th class="border p-2">Due_Date</th>
-                    <th class="border p-2">Status</th>
-                    <th class="border p-2">Action</th>
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
 
+            <table class="min-w-full">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="invoice in invoices" :key="invoice.id">
-                    <td class="border p-2">{{ invoice.customer_id }}</td>
-                    <td class="border p-2">{{ invoice.proposal_number }}</td>
-                    <td class="border p-2">{{ invoice.invoice_number }}</td>
-                    <td class="border p-2">RS. {{ invoice.amount }}</td>
-                    <td class="border p-2">{{ invoice.due_date }}</td>
-                    <td 
-                        class="border p-2 text-white"
-                        :class="{
-                        'bg-green-600': invoice.status === 'Paid',
-                        'bg-yellow-600': invoice.status === 'Unpaid',
-                        'bg-red-600': invoice.status === 'Overdue'
+                <thead class="bg-gray-50 border-b">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+                            Customer ID
+                        </th>
 
-                        }"
+                        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+                            Proposal
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+                            Invoice
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+                            Amount
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-gray-500 font-semibold uppercase text-sm">
+                            Due Date
+                        </th>
+
+                        <th class="px-6 py-4 text-center text-gray-500 font-semibold uppercase text-sm">
+                            Status
+                        </th>
+
+                        <th class="px-6 py-4 text-center text-gray-500 font-semibold uppercase text-sm">
+                            Actions
+                        </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr
+                        v-for="invoice in invoices"
+                        :key="invoice.id"
+                        class="border-b hover:bg-gray-50 transition duration-200"
                     >
-                        {{ invoice.status }}
-                    </td>
 
-                    <td class="border p-2">
-                        <Link 
-                            :href="route('invoices.edit',invoice.id)"
-                            class="text-blue-600 mr-4"
-                        >
+                        <td class="px-6 py-5">
+                            {{ invoice.customer_id }}
+                        </td>
 
-                            Edit
-                        </Link>
+                        <td class="px-6 py-5">
+                            {{ invoice.proposal_number }}
+                        </td>
 
-                        <Link 
-                            :href="route('payment.checkout',invoice.id)"
-                            class="text-green-600 mr-4"
-                        >
+                        <td class="px-6 py-5 font-semibold">
+                            {{ invoice.invoice_number }}
+                        </td>
 
-                            Pay Now
-                        </Link>
+                        <td class="px-6 py-5 font-bold text-blue-600">
+                            Rs. {{ invoice.amount }}
+                        </td>
 
-                        <button
-                            @click="deleteInvoice(invoice.id)"
-                            class="text-red-600 mr-4">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        <td class="px-6 py-5">
+                            {{ invoice.due_date }}
+                        </td>
+
+                        <td class="px-6 py-5 text-center">
+
+                            <span
+                                class="px-4 py-1 rounded-full text-sm font-semibold"
+                                :class="{
+                                    'bg-green-100 text-green-700': invoice.status === 'Paid',
+                                    'bg-yellow-100 text-yellow-700': invoice.status === 'Unpaid',
+                                    'bg-red-100 text-red-700': invoice.status === 'Overdue'
+                                }"
+                            >
+                                {{ invoice.status }}
+                            </span>
+
+                        </td>
+
+                        <td class="px-6 py-5">
+
+                            <div class="flex justify-center gap-2">
+
+                                <Link
+                                    :href="route('invoices.edit', invoice.id)"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-xl transition-all duration-200"
+                                >
+                                    Edit
+                                </Link>
+
+                                <Link
+                                    :href="route('payment.checkout', invoice.id)"
+                                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-xl transition-all duration-200"
+                                >
+                                    Pay
+                                </Link>
+
+                                <button
+                                    @click="deleteInvoice(invoice.id)"
+                                    class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-xl transition-all duration-200"
+                                >
+                                    Delete
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+</div>
         </div>
     </AppLayout>
 
