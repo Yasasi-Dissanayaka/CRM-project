@@ -64,6 +64,10 @@ const logout = () => {
                                     Invoices
                                 </NavLink>
 
+                                <NavLink :href="route('transactions.index')" :active="route().current('transactions.*')">
+                                    Transactions
+                                </NavLink>
+
                             </div>
                         </div>
 
@@ -218,6 +222,10 @@ const logout = () => {
 
                         <ResponsiveNavLink :href="route('invoices.index')" :active="route().current('invoices.*')">
                             Invoices
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink :href="route('transactions.index')" :active="route().current('transactions.*')">
+                            Transactions
                         </ResponsiveNavLink>
 
                         
