@@ -21,8 +21,21 @@
 
     <p><strong>Due Date:</strong> {{ $invoice->due_date }}</p>
 
-    <p><strong>Status:</strong> {{ $invoice->status }}</p>
-
+    <br>
+    <a href="{{ route('payment.checkout',$invoice->id) }}"
+        style="
+            background:#6366F1;
+            color:white;
+            padding:12px 25px;
+            text-decoration:none;
+            border-radius:8px;
+            display:inline-block;
+            font-weight:bold;"> 
+            <b>
+                Pay now
+            </b>
+    </a>
+    <br><br>
     <hr>
 
     <p>Thank you for choosing our services.</p>

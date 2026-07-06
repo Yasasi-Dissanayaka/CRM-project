@@ -89,6 +89,24 @@ const submit = () =>{
                             <InputError :message="form.errors.amount"/>
                         </div>
 
+                        <div class="mb-4">
+                            <InputLabel for="status" value="Proposal Status"/>
+
+                            <select
+                                v-model="form.status"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                            >
+                                <option value="">Select Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Accepted">Accepted</option>
+                                <option value="Rejected">Rejected</option>
+
+                                
+                            </select>
+
+                            <InputError :message="form.errors.status"/>
+                        </div>
+
                         <PrimaryButton>
                             Save Proposal
                         </PrimaryButton>

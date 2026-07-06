@@ -33,21 +33,24 @@ const logout = () => {
 
         <Banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-[#F3F0FF]">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
+                            <div class="shrink-0 flex items-center" style="margin-left:-130px;">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationMark class="block h-9 w-auto" />
+                                    <img
+                                        src="/images/CRMlogo.png"
+                                        alt = "CRM Logo"
+                                        class="h-16 w-auto"/>
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-10 sm:-my-px sm:ms-[300px] sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
@@ -71,10 +74,12 @@ const logout = () => {
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
-                            <div class="ms-3 relative">
+
+
+                        <div class="hidden sm:flex sm:items-center ml-auto">
+                            <div class="ms-4 relative">
                                 <!-- Teams Dropdown -->
-                                <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
+                                <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="48">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
                                             <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -129,6 +134,32 @@ const logout = () => {
                                     </template>
                                 </Dropdown>
                             </div>
+                        <div class="hidden sm:flex items-center ml-auto">
+    <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"/>
+        </svg>
+
+        <input
+            type="text"
+            placeholder="Search..."
+            class="w-64 h-10 pl-10 pr-4 rounded-full border border-gray-300 bg-gray-50
+                   focus:outline-none
+                   focus:ring-2
+                   focus:ring-[#6366F1]
+                   focus:border-[#6366F1]
+                   transition"
+        />
+    </div>
+</div>
 
                             <!-- Settings Dropdown -->
                             <div class="ms-3 relative">
@@ -309,7 +340,7 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
+            <header v-if="$slots.header" class="bg-#C4B5FD shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>

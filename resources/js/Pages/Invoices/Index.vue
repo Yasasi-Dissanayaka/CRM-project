@@ -140,12 +140,7 @@ function deleteInvoice(id){
                                     Edit
                                 </Link>
 
-                                <Link
-                                    :href="route('payment.checkout', invoice.id)"
-                                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-xl transition-all duration-200"
-                                >
-                                    Pay
-                                </Link>
+                                
 
                                 <button
                                     @click="deleteInvoice(invoice.id)"

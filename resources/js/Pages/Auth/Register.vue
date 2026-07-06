@@ -28,7 +28,11 @@ const submit = () => {
 
     <AuthenticationCard>
         <template #logo>
-            <AuthenticationCardLogo />
+            <img
+                src="/images/CRMlogo.png"
+                alt="CRM Logo"
+                class="w-24 h-24 mx-auto mb-6"
+            />
         </template>
 
         <form @submit.prevent="submit">
