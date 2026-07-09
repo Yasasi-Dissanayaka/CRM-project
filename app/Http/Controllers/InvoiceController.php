@@ -54,8 +54,10 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = Invoice::create($validated);
+
+        $customer = Customer :: findOrFail($validated['customer_id']);
         
-        Mail::to('yasasianjanadissanayaka@gmail.com')->send(new InvoiceMail($invoice));
+        Mail::to($customer->email)->send(new InvoiceMail($invoice));
 
         return redirect()->route('invoices.index');
     }

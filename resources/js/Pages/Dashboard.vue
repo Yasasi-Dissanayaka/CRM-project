@@ -53,11 +53,7 @@ defineProps({customerCount: Number,
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <div
-                    class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
-
-                    <div class="text-red-600 text-4xl mb-5">
-                        
-                    </div>
+                    class="bg-[#EEF2FF] rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
 
                     <h3 class="text-gray-500 font-semibold">
                         Customers
@@ -71,11 +67,7 @@ defineProps({customerCount: Number,
 
                 <!-- Proposals -->
                 <div
-                    class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
-
-                    <div class="text-green-600 text-4xl mb-4">
-                        
-                    </div>
+                    class="bg-[#EEF2FF] rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
 
                     <h3 class="text-gray-500 font-semibold">
                         Proposals
@@ -88,11 +80,7 @@ defineProps({customerCount: Number,
                 </div>
 
                 <div
-                    class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
-
-                    <div class="text-yellow-500 text-4xl mb-4">
-                        
-                    </div>
+                    class="bg-[#EEF2FF] rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
 
                     <h3 class="text-gray-500 font-semibold">
                         Invoices
@@ -105,11 +93,7 @@ defineProps({customerCount: Number,
                 </div>
 
                 <div
-                    class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
-
-                    <div class="text-blue-600 text-4xl mb-4">
-                        
-                    </div>
+                    class="bg-[#EEF2FF] rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6">
 
                     <h3 class="text-gray-500 font-semibold">
                         Transactions
